@@ -4,14 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About the Project | AgriSense Sugarcane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
 <header>
   <div class="navbar">
-    <div class="brand"><span class="leaf">🌱</span> AgriSense Sugarcane</div>
-    <nav>
+    <div class="brand"><span class="leaf"><i class="fa-solid fa-seedling"></i></span> AgriSense Sugarcane</div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="site-nav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -23,8 +31,9 @@
   </div>
 </header>
 
-<section class="hero" style="padding:60px 24px;">
+<section class="hero hero-sm" style="background-image:url('https://images.unsplash.com/photo-1719254500669-2bc432c43933?auto=format&fit=crop&w=1800&q=70');">
   <div class="container">
+    <span class="hero-tag"><i class="fa-solid fa-book-open"></i> The Project</span>
     <h1>About the Project</h1>
     <p>Background, objectives, and methodology of the AI &amp; sensor-based irrigation advisory system for sugarcane.</p>
   </div>
@@ -32,34 +41,44 @@
 
 <section>
   <div class="container">
-    <h2 class="section-title">Problem Statement</h2>
-    <p class="section-subtitle">
-      Sugarcane requires 1,500–2,500 mm of water over its crop cycle, making irrigation scheduling critical to yield and sucrose content.
-      Traditional irrigation in most farms is based on fixed schedules or visual judgment, which frequently causes over-irrigation
-      (wasting water and leaching nutrients) or under-irrigation (stressing the crop during sensitive growth stages).
-      This project addresses that gap using low-cost sensors and an AI advisory layer.
-    </p>
+    <div class="two-col">
+      <div data-aos="fade-right">
+        <span class="section-tag" style="text-align:left;">The Problem</span>
+        <h2 class="section-title" style="text-align:left;">Why Sugarcane Irrigation Needs a Rethink</h2>
+        <p>Sugarcane requires 1,500–2,500 mm of water over its crop cycle, making irrigation scheduling critical to yield and sucrose content. Traditional irrigation in most farms is based on fixed schedules or visual judgment, which frequently causes over-irrigation (wasting water and leaching nutrients) or under-irrigation (stressing the crop during sensitive growth stages).</p>
+        <br>
+        <p>This project addresses that gap using low-cost sensors and an AI advisory layer that reasons about growth stage, soil condition, and weather together.</p>
+      </div>
+      <div class="split-image" data-aos="fade-left" style="background-image:url('https://images.unsplash.com/photo-1631577159151-cc4085fb4cf7?auto=format&fit=crop&w=1000&q=70');">
+        <div class="split-caption"><i class="fa-solid fa-tractor"></i> Traditional farm equipment in the field</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="alt-bg">
   <div class="container">
+    <span class="section-tag">Goals</span>
     <h2 class="section-title">Objectives</h2>
     <div class="grid">
-      <div class="card">
-        <h3>1. Real-Time Monitoring</h3>
+      <div class="card" data-aos="fade-up" data-aos-delay="0">
+        <div class="icon"><i class="fa-solid fa-satellite-dish"></i></div>
+        <h3>Real-Time Monitoring</h3>
         <p>Continuously measure soil moisture, temperature, and humidity across the sugarcane field.</p>
       </div>
-      <div class="card">
-        <h3>2. Growth-Stage Awareness</h3>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon"><i class="fa-solid fa-seedling"></i></div>
+        <h3>Growth-Stage Awareness</h3>
         <p>Tailor irrigation thresholds to germination, tillering, grand growth, and maturity stages of sugarcane.</p>
       </div>
-      <div class="card">
-        <h3>3. AI-Based Recommendations</h3>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>AI-Based Recommendations</h3>
         <p>Use sensor and weather data to generate irrigate/hold/delay recommendations and estimated water quantity.</p>
       </div>
-      <div class="card">
-        <h3>4. Accessible Dashboard</h3>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="icon"><i class="fa-solid fa-desktop"></i></div>
+        <h3>Accessible Dashboard</h3>
         <p>Present recommendations through a simple web interface usable by farmers with minimal technical training.</p>
       </div>
     </div>
@@ -68,30 +87,31 @@
 
 <section>
   <div class="container">
+    <span class="section-tag">Approach</span>
     <h2 class="section-title">Project Methodology</h2>
-    <div class="timeline">
+    <div class="timeline" data-aos="fade-up">
       <div class="timeline-item">
-        <h4>1. Requirement Analysis</h4>
+        <h4><i class="fa-solid fa-magnifying-glass"></i> 1. Requirement Analysis</h4>
         <p>Studied sugarcane water requirements at each growth stage and identified the key parameters (soil moisture, temperature, humidity, rainfall) needed for irrigation decisions.</p>
       </div>
       <div class="timeline-item">
-        <h4>2. Sensor Selection &amp; Design</h4>
+        <h4><i class="fa-solid fa-microchip"></i> 2. Sensor Selection &amp; Design</h4>
         <p>Selected capacitive soil moisture sensors, DHT22 temperature/humidity sensors, and a microcontroller (ESP32/Arduino) for field data acquisition — detailed on the Sensors &amp; Tech page.</p>
       </div>
       <div class="timeline-item">
-        <h4>3. AI Advisory Logic</h4>
-        <p>Built a rule-based decision engine (extendable to a trained ML model) that maps sensor readings and crop stage to an irrigation recommendation.</p>
+        <h4><i class="fa-solid fa-brain"></i> 3. AI Advisory Logic</h4>
+        <p>Trained a neural network (scikit-learn MLPClassifier) on a labeled sugarcane irrigation dataset to map sensor readings and crop stage to an irrigation recommendation, reaching 94.6% test accuracy.</p>
       </div>
       <div class="timeline-item">
-        <h4>4. Web Interface Development</h4>
-        <p>Developed this five-page website — Home, About, Sensors &amp; Tech, AI Advisory demo, and Contact — using HTML, CSS, and JavaScript.</p>
+        <h4><i class="fa-solid fa-laptop-code"></i> 4. Web Interface Development</h4>
+        <p>Developed this five-page website — Home, About, Sensors &amp; Tech, AI Advisory demo, and Contact — using HTML, CSS, and JavaScript, with the trained model running entirely client-side.</p>
       </div>
       <div class="timeline-item">
-        <h4>5. Testing</h4>
-        <p>Verified navigation across all pages, cross-browser rendering, responsive layout on mobile, and correctness of advisory logic outputs across sample input ranges.</p>
+        <h4><i class="fa-solid fa-vial"></i> 5. Testing</h4>
+        <p>Verified navigation across all pages, cross-browser rendering, responsive layout on mobile, and that the browser-side model output matched the Python model exactly.</p>
       </div>
       <div class="timeline-item">
-        <h4>6. Deployment</h4>
+        <h4><i class="fa-solid fa-cloud-arrow-up"></i> 6. Deployment</h4>
         <p>Registered a project domain/subdomain and hosted the site on GitHub Pages for public access.</p>
       </div>
     </div>
@@ -100,8 +120,9 @@
 
 <section class="alt-bg">
   <div class="container">
+    <span class="section-tag">Impact</span>
     <h2 class="section-title">Expected Impact</h2>
-    <table>
+    <table data-aos="fade-up">
       <tr><th>Metric</th><th>Traditional Irrigation</th><th>With AI Advisory System</th></tr>
       <tr><td>Water usage</td><td>Fixed schedule, often excessive</td><td>Demand-based, ~20-30% reduction</td></tr>
       <tr><td>Decision basis</td><td>Farmer intuition/calendar</td><td>Real-time sensor + AI data</td></tr>
@@ -112,10 +133,40 @@
 </section>
 
 <footer>
-  <p>&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</p>
-  <p><a href="contact.html">Contact the project team</a></p>
+  <div class="footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:12px;"><span class="leaf"><i class="fa-solid fa-seedling"></i></span> AgriSense Sugarcane</div>
+      <p style="color:var(--green-pale); font-size:0.88rem; max-width:320px;">AI and sensor-based irrigation advisory for sugarcane — an academic technology demonstration.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:khyatishah2005@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sensors.html">Sensors & Tech</a></li>
+        <li><a href="advisory.html">AI Advisory</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="contact.html">Contact form</a></li>
+        <li><a href="mailto:khyatishah2005@gmail.com">khyatishah2005@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</div>
 </footer>
 
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
