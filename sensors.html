@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sensors & Technology | AgriSense Sugarcane</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand"><span class="leaf">🌱</span> AgriSense Sugarcane</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sensors.html">Sensors & Tech</a></li>
+        <li><a href="advisory.html">AI Advisory</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding:60px 24px;">
+  <div class="container">
+    <h1>Sensors &amp; Technology Stack</h1>
+    <p>The hardware and software components that power real-time field monitoring and AI-based irrigation decisions.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Field Hardware</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🌡️</div>
+        <h3>Soil Moisture Sensor</h3>
+        <p>Capacitive soil moisture probes placed at root depth (15–30 cm) measure volumetric water content, avoiding the corrosion issues of resistive sensors.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌤️</div>
+        <h3>Temperature &amp; Humidity Sensor</h3>
+        <p>DHT22/SHT31 sensors capture ambient air temperature and relative humidity, both of which affect crop evapotranspiration rate.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌧️</div>
+        <h3>Rain Gauge / Weather API</h3>
+        <p>A tipping-bucket rain gauge or an external weather API supplies rainfall data and short-term forecasts to avoid unnecessary irrigation.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔌</div>
+        <h3>Microcontroller Node</h3>
+        <p>An ESP32 or Arduino with a Wi-Fi/LoRa module reads sensor data and transmits it to the cloud at configurable intervals.</p>
+      </div>
+      <div class="card">
+        <div class="icon">☀️</div>
+        <h3>Solar Power Supply</h3>
+        <p>A small solar panel with battery backup keeps field nodes powered independently in remote plots.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💧</div>
+        <h3>Automated Valve (Optional)</h3>
+        <p>A solenoid valve can be actuated directly by the advisory engine for fully automated drip irrigation control.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="container">
+    <h2 class="section-title">System Architecture</h2>
+    <p class="section-subtitle">Data flows from field sensors through a gateway to cloud storage, where the AI advisory engine processes it and returns recommendations to the web dashboard.</p>
+    <div class="card" style="max-width:800px;margin:0 auto;border-top-color: var(--sky-blue); text-align:center;">
+      <p style="font-family:monospace; font-size:0.95rem; line-height:2;">
+        [Soil / Temp / Humidity Sensors]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+        [ESP32 Microcontroller + Wi-Fi/LoRa]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+        [Cloud Database (e.g., Firebase / MQTT Broker)]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+        [AI Advisory Engine — rule-based / ML model]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
+        [Web Dashboard &amp; Farmer Alerts] → [Optional: Automated Valve]
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Software Stack</h2>
+    <table>
+      <tr><th>Layer</th><th>Technology</th></tr>
+      <tr><td>Sensor Firmware</td><td>Arduino IDE / MicroPython on ESP32</td></tr>
+      <tr><td>Data Transmission</td><td>MQTT / HTTP REST over Wi-Fi or LoRaWAN</td></tr>
+      <tr><td>Cloud Storage</td><td>Firebase Realtime Database / cloud time-series DB</td></tr>
+      <tr><td>AI Advisory Engine</td><td>Rule-based thresholds (this demo); extendable to a trained regression/classification model</td></tr>
+      <tr><td>Web Frontend</td><td>HTML5, CSS3, JavaScript (this website)</td></tr>
+      <tr><td>Hosting</td><td>GitHub Pages (static site hosting)</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="container">
+    <h2 class="section-title">Simulated Live Readings</h2>
+    <p class="section-subtitle">Placeholder telemetry showing what a connected sensor node would report to the dashboard in real deployment.</p>
+    <div class="badge-row">
+      <div class="badge"><div class="value" id="live-soil">--%</div><div class="label">Soil Moisture</div></div>
+      <div class="badge"><div class="value" id="live-temp">--°C</div><div class="label">Air Temperature</div></div>
+      <div class="badge"><div class="value" id="live-humidity">--%</div><div class="label">Humidity</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</p>
+  <p><a href="contact.html">Contact the project team</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

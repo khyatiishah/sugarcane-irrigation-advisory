@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgriSense | Irrigation Advisory System for Sugarcane</title>
+<meta name="description" content="AI and sensor-based irrigation advisory system for sugarcane crops — real-time soil moisture monitoring and smart irrigation recommendations.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand"><span class="leaf">🌱</span> AgriSense Sugarcane</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sensors.html">Sensors & Tech</a></li>
+        <li><a href="advisory.html">AI Advisory</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>Irrigation Advisory System for Sugarcane Crop</h1>
+    <p>An AI and sensor-based solution that monitors soil and weather conditions in real time and delivers smart irrigation recommendations to reduce water waste and improve sugarcane yield.</p>
+    <a href="advisory.html" class="btn">Try the AI Advisory Demo</a>
+    <a href="about.html" class="btn btn-outline">Learn More</a>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Live Sensor Snapshot (Simulated)</h2>
+    <p class="section-subtitle">Demonstration of field data collected by IoT sensor nodes deployed across a sugarcane plot. Values refresh every few seconds to simulate real-time telemetry.</p>
+    <div class="badge-row">
+      <div class="badge">
+        <div class="value" id="live-soil">--%</div>
+        <div class="label">Soil Moisture</div>
+      </div>
+      <div class="badge">
+        <div class="value" id="live-temp">--°C</div>
+        <div class="label">Air Temperature</div>
+      </div>
+      <div class="badge">
+        <div class="value" id="live-humidity">--%</div>
+        <div class="label">Humidity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt-bg">
+  <div class="container">
+    <h2 class="section-title">Why This System?</h2>
+    <p class="section-subtitle">Sugarcane is a water-intensive crop. Manual, calendar-based irrigation often leads to over- or under-watering. Our system replaces guesswork with data.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">💧</div>
+        <h3>Reduce Water Waste</h3>
+        <p>Irrigate only when the soil and weather data indicate real need, cutting water usage by up to 30%.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📡</div>
+        <h3>Real-Time Sensing</h3>
+        <p>Soil moisture, temperature, and humidity sensors stream field data continuously to the cloud.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>AI-Driven Advisory</h3>
+        <p>A rule-based / ML model interprets sensor data and crop growth stage to recommend precise irrigation actions.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>Higher Yield</h3>
+        <p>Consistent, optimal soil moisture through each growth stage supports healthier cane and better sucrose content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">How It Works</h2>
+    <div class="two-col">
+      <div>
+        <p>Sensor nodes installed in the field measure soil moisture, temperature, and humidity at regular intervals. This data is transmitted wirelessly to a central system, where an AI advisory engine compares it against crop-stage-specific thresholds and weather forecasts.</p>
+        <br>
+        <p>The system then generates an actionable recommendation — irrigate now, hold, or delay — along with an estimated water quantity, viewable on the dashboard or sent as an alert to the farmer.</p>
+      </div>
+      <div class="card" style="border-top-color: var(--sky-blue);">
+        <h3>Pipeline</h3>
+        <p>Sensors → Data Transmission → Cloud/Edge Processing → AI Advisory Engine → Farmer Dashboard/Alert → Irrigation Action</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</p>
+  <p><a href="contact.html">Contact the project team</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
