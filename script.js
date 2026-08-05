@@ -157,6 +157,11 @@ function initSensorTrendChart() {
   labels.push('now');
   soilData.push(initial.soil);
 
+  if (canvas && typeof Chart === 'undefined') {
+    canvas.closest('.chart-card').innerHTML =
+      '<p class="helper-text" style="text-align:center;">Live chart unavailable — Chart.js did not load (check your internet connection or ad-blocker).</p>';
+  }
+
   if (canvas && typeof Chart !== 'undefined') {
     trendChart = new Chart(canvas.getContext('2d'), {
       type: 'line',
@@ -233,7 +238,23 @@ function runAdvisory(event) {
     return;
   }
 
-  const prediction = predictIrrigation(soilMoisture, temperature, humidity, rainForecast, growthStage);
+  if (typeof predictIrrigation !== 'function') {
+    resultBox.className = 'alert show';
+    resultBox.innerHTML = '<h3>Model Not Loaded</h3><p>The AI model files (<code>model_weights.js</code> and <code>ai_model.js</code>) did not load. If you are viewing this on a hosted site, make sure both files were uploaded alongside the HTML/CSS/JS files and that the &lt;script&gt; tags in advisory.html point to the correct paths. Check your browser console (F12) for a 404 on either file.</p>';
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return;
+  }
+
+  let prediction;
+  try {
+    prediction = predictIrrigation(soilMoisture, temperature, humidity, rainForecast, growthStage);
+  } catch (err) {
+    resultBox.className = 'alert show';
+    resultBox.innerHTML = `<h3>Something Went Wrong</h3><p>The model threw an error: ${err.message}. Check the browser console for details.</p>`;
+    resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    console.error('predictIrrigation failed:', err);
+    return;
+  }
 
   const thresholds = {
     germination: { low: 65, high: 80 },
