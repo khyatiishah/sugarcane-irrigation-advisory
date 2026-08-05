@@ -4,14 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sensors & Technology | AgriSense Sugarcane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
 <header>
   <div class="navbar">
-    <div class="brand"><span class="leaf">🌱</span> AgriSense Sugarcane</div>
-    <nav>
+    <div class="brand"><span class="leaf"><i class="fa-solid fa-seedling"></i></span> AgriSense Sugarcane</div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="site-nav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -23,8 +31,9 @@
   </div>
 </header>
 
-<section class="hero" style="padding:60px 24px;">
+<section class="hero hero-sm" style="background-image:url('https://images.unsplash.com/photo-1606154846428-c5cee4d714f6?auto=format&fit=crop&w=1800&q=70');">
   <div class="container">
+    <span class="hero-tag"><i class="fa-solid fa-satellite-dish"></i> Hardware &amp; Software</span>
     <h1>Sensors &amp; Technology Stack</h1>
     <p>The hardware and software components that power real-time field monitoring and AI-based irrigation decisions.</p>
   </div>
@@ -32,37 +41,51 @@
 
 <section>
   <div class="container">
-    <h2 class="section-title">Field Hardware</h2>
+    <span class="section-tag">Field Hardware</span>
+    <h2 class="section-title">What's Deployed in the Field</h2>
+    <p class="section-subtitle">Low-cost, solar-powered sensor nodes capture the data the AI model needs to make accurate irrigation calls.</p>
     <div class="grid">
-      <div class="card">
-        <div class="icon">🌡️</div>
-        <h3>Soil Moisture Sensor</h3>
-        <p>Capacitive soil moisture probes placed at root depth (15–30 cm) measure volumetric water content, avoiding the corrosion issues of resistive sensors.</p>
+      <div class="photo-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1606154846428-c5cee4d714f6?auto=format&fit=crop&w=700&q=70" alt="Water droplets on soil"></div>
+        <div class="photo-body">
+          <h3><i class="fa-solid fa-droplet"></i> Soil Moisture Sensor</h3>
+          <p>Capacitive soil moisture probes placed at root depth (15–30 cm) measure volumetric water content, avoiding the corrosion issues of resistive sensors.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">🌤️</div>
-        <h3>Temperature &amp; Humidity Sensor</h3>
-        <p>DHT22/SHT31 sensors capture ambient air temperature and relative humidity, both of which affect crop evapotranspiration rate.</p>
+      <div class="photo-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1499260126922-fbb24624a4e8?auto=format&fit=crop&w=700&q=70" alt="Aerial view of farmland"></div>
+        <div class="photo-body">
+          <h3><i class="fa-solid fa-cloud-sun"></i> Temperature &amp; Humidity Sensor</h3>
+          <p>DHT22/SHT31 sensors capture ambient air temperature and relative humidity, both of which affect crop evapotranspiration rate.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">🌧️</div>
-        <h3>Rain Gauge / Weather API</h3>
-        <p>A tipping-bucket rain gauge or an external weather API supplies rainfall data and short-term forecasts to avoid unnecessary irrigation.</p>
+      <div class="photo-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1692369584496-3216a88f94c1?auto=format&fit=crop&w=700&q=70" alt="Sprinkler irrigation on crop"></div>
+        <div class="photo-body">
+          <h3><i class="fa-solid fa-cloud-rain"></i> Rain Gauge / Weather API</h3>
+          <p>A tipping-bucket rain gauge or an external weather API supplies rainfall data and short-term forecasts to avoid unnecessary irrigation.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">🔌</div>
-        <h3>Microcontroller Node</h3>
-        <p>An ESP32 or Arduino with a Wi-Fi/LoRa module reads sensor data and transmits it to the cloud at configurable intervals.</p>
+      <div class="photo-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1719254500669-2bc432c43933?auto=format&fit=crop&w=700&q=70" alt="Aerial view of field with equipment"></div>
+        <div class="photo-body">
+          <h3><i class="fa-solid fa-microchip"></i> Microcontroller Node</h3>
+          <p>An ESP32 or Arduino with a Wi-Fi/LoRa module reads sensor data and transmits it to the cloud at configurable intervals.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">☀️</div>
-        <h3>Solar Power Supply</h3>
-        <p>A small solar panel with battery backup keeps field nodes powered independently in remote plots.</p>
+      <div class="photo-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1530049478161-0780526964f4?auto=format&fit=crop&w=700&q=70" alt="Close up green plant leaves"></div>
+        <div class="photo-body">
+          <h3><i class="fa-solid fa-solar-panel"></i> Solar Power Supply</h3>
+          <p>A small solar panel with battery backup keeps field nodes powered independently in remote plots.</p>
+        </div>
       </div>
-      <div class="card">
-        <div class="icon">💧</div>
-        <h3>Automated Valve (Optional)</h3>
-        <p>A solenoid valve can be actuated directly by the advisory engine for fully automated drip irrigation control.</p>
+      <div class="photo-card" data-aos="fade-up" data-aos-delay="500">
+        <div class="photo-wrap"><img src="https://images.unsplash.com/photo-1631577159151-cc4085fb4cf7?auto=format&fit=crop&w=700&q=70" alt="Farm equipment in field"></div>
+        <div class="photo-body">
+          <h3><i class="fa-solid fa-faucet-drip"></i> Automated Valve (Optional)</h3>
+          <p>A solenoid valve can be actuated directly by the advisory engine for fully automated drip irrigation control.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -70,19 +93,20 @@
 
 <section class="alt-bg">
   <div class="container">
+    <span class="section-tag">Architecture</span>
     <h2 class="section-title">System Architecture</h2>
     <p class="section-subtitle">Data flows from field sensors through a gateway to cloud storage, where the AI advisory engine processes it and returns recommendations to the web dashboard.</p>
-    <div class="card" style="max-width:800px;margin:0 auto;border-top-color: var(--sky-blue); text-align:center;">
+    <div class="card" style="max-width:800px;margin:0 auto;border-top-color: var(--sky-blue); text-align:center;" data-aos="zoom-in">
       <p style="font-family:monospace; font-size:0.95rem; line-height:2;">
-        [Soil / Temp / Humidity Sensors]<br>
+        <i class="fa-solid fa-microchip"></i> [Soil / Temp / Humidity Sensors]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
-        [ESP32 Microcontroller + Wi-Fi/LoRa]<br>
+        <i class="fa-solid fa-wifi"></i> [ESP32 Microcontroller + Wi-Fi/LoRa]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
-        [Cloud Database (e.g., Firebase / MQTT Broker)]<br>
+        <i class="fa-solid fa-cloud"></i> [Cloud Database (e.g., Firebase / MQTT Broker)]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
-        [AI Advisory Engine — rule-based / ML model]<br>
+        <i class="fa-solid fa-brain"></i> [AI Advisory Engine — trained neural network (MLP)]<br>
         &nbsp;&nbsp;&nbsp;&nbsp;↓<br>
-        [Web Dashboard &amp; Farmer Alerts] → [Optional: Automated Valve]
+        <i class="fa-solid fa-desktop"></i> [Web Dashboard &amp; Farmer Alerts] → [Optional: Automated Valve]
       </p>
     </div>
   </div>
@@ -90,36 +114,85 @@
 
 <section>
   <div class="container">
+    <span class="section-tag">Stack Detail</span>
     <h2 class="section-title">Software Stack</h2>
-    <table>
-      <tr><th>Layer</th><th>Technology</th></tr>
-      <tr><td>Sensor Firmware</td><td>Arduino IDE / MicroPython on ESP32</td></tr>
-      <tr><td>Data Transmission</td><td>MQTT / HTTP REST over Wi-Fi or LoRaWAN</td></tr>
-      <tr><td>Cloud Storage</td><td>Firebase Realtime Database / cloud time-series DB</td></tr>
-      <tr><td>AI Advisory Engine</td><td>Rule-based thresholds (this demo); extendable to a trained regression/classification model</td></tr>
-      <tr><td>Web Frontend</td><td>HTML5, CSS3, JavaScript (this website)</td></tr>
-      <tr><td>Hosting</td><td>GitHub Pages (static site hosting)</td></tr>
-    </table>
+    <div style="max-width:760px; margin:0 auto;" data-aos="fade-up">
+      <div class="accordion-item">
+        <div class="accordion-header">Sensor Firmware <i class="fa-solid fa-chevron-down chev"></i></div>
+        <div class="accordion-body"><p>Arduino IDE / MicroPython on ESP32, reading analog/digital sensor values and pushing them over Wi-Fi at configurable intervals.</p></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">Data Transmission <i class="fa-solid fa-chevron-down chev"></i></div>
+        <div class="accordion-body"><p>MQTT or HTTP REST over Wi-Fi, or LoRaWAN for longer-range, low-power deployments across large plots.</p></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">Cloud Storage <i class="fa-solid fa-chevron-down chev"></i></div>
+        <div class="accordion-body"><p>Firebase Realtime Database or another cloud time-series database, storing historical sensor readings for trend analysis.</p></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">AI Advisory Engine <i class="fa-solid fa-chevron-down chev"></i></div>
+        <div class="accordion-body"><p>Neural network (MLPClassifier, scikit-learn) trained offline in Python, running client-side in this demo via a JavaScript forward pass — see the AI Advisory page for the live model.</p></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">Web Frontend <i class="fa-solid fa-chevron-down chev"></i></div>
+        <div class="accordion-body"><p>HTML5, CSS3, and JavaScript (this website), enhanced with Chart.js for live visualizations and AOS for scroll animations.</p></div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">Hosting <i class="fa-solid fa-chevron-down chev"></i></div>
+        <div class="accordion-body"><p>GitHub Pages — free static site hosting with automatic HTTPS and a custom-domain option.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="alt-bg">
   <div class="container">
+    <span class="section-tag">Live Demo</span>
     <h2 class="section-title">Simulated Live Readings</h2>
     <p class="section-subtitle">Placeholder telemetry showing what a connected sensor node would report to the dashboard in real deployment.</p>
-    <div class="badge-row">
-      <div class="badge"><div class="value" id="live-soil">--%</div><div class="label">Soil Moisture</div></div>
-      <div class="badge"><div class="value" id="live-temp">--°C</div><div class="label">Air Temperature</div></div>
-      <div class="badge"><div class="value" id="live-humidity">--%</div><div class="label">Humidity</div></div>
+    <div class="badge-row" data-aos="fade-up">
+      <div class="badge"><div class="label"><span class="pulse-dot"></span>Soil Moisture</div><div class="value" id="live-soil">--%</div></div>
+      <div class="badge"><div class="label"><span class="pulse-dot"></span>Air Temperature</div><div class="value" id="live-temp">--°C</div></div>
+      <div class="badge"><div class="label"><span class="pulse-dot"></span>Humidity</div><div class="value" id="live-humidity">--%</div></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</p>
-  <p><a href="contact.html">Contact the project team</a></p>
+  <div class="footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:12px;"><span class="leaf"><i class="fa-solid fa-seedling"></i></span> AgriSense Sugarcane</div>
+      <p style="color:var(--green-pale); font-size:0.88rem; max-width:320px;">AI and sensor-based irrigation advisory for sugarcane — an academic technology demonstration.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:khyatishah2005@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="advisory.html">AI Advisory</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="contact.html">Contact form</a></li>
+        <li><a href="mailto:khyatishah2005@gmail.com">khyatishah2005@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</div>
 </footer>
 
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
