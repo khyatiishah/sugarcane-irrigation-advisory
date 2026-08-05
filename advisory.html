@@ -4,14 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Advisory Demo | AgriSense Sugarcane</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+
 <header>
   <div class="navbar">
-    <div class="brand"><span class="leaf">🌱</span> AgriSense Sugarcane</div>
-    <nav>
+    <div class="brand"><span class="leaf"><i class="fa-solid fa-seedling"></i></span> AgriSense Sugarcane</div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav id="site-nav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -23,31 +31,32 @@
   </div>
 </header>
 
-<section class="hero" style="padding:60px 24px;">
+<section class="hero hero-sm" style="background-image:url('https://images.unsplash.com/photo-1530049478161-0780526964f4?auto=format&fit=crop&w=1800&q=70');">
   <div class="container">
+    <span class="hero-tag"><i class="fa-solid fa-brain"></i> Live Model Demo</span>
     <h1>AI Irrigation Advisory Demo</h1>
-    <p>Enter current field readings to get an instant irrigation recommendation from the advisory engine.</p>
+    <p>Drag the sliders to match current field readings and get an instant irrigation recommendation from the trained neural network.</p>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="form-box">
+    <div class="form-box" data-aos="fade-up">
       <form id="advisory-form" onsubmit="runAdvisory(event)">
         <div class="form-group">
-          <label for="soilMoisture">Soil Moisture (%)</label>
-          <input type="number" id="soilMoisture" min="0" max="100" step="0.1" placeholder="e.g. 55" required>
+          <label for="soilMoisture">Soil Moisture <span class="slider-value" id="soilMoistureVal">55%</span></label>
+          <input type="range" id="soilMoisture" min="0" max="100" step="1" value="55" data-display="soilMoistureVal" data-unit="%">
           <div class="helper-text">From capacitive soil moisture sensor at root depth.</div>
         </div>
 
         <div class="form-group">
-          <label for="temperature">Air Temperature (°C)</label>
-          <input type="number" id="temperature" min="-10" max="55" step="0.1" placeholder="e.g. 32" required>
+          <label for="temperature">Air Temperature <span class="slider-value" id="temperatureVal">32°C</span></label>
+          <input type="range" id="temperature" min="10" max="48" step="1" value="32" data-display="temperatureVal" data-unit="°C">
         </div>
 
         <div class="form-group">
-          <label for="humidity">Relative Humidity (%)</label>
-          <input type="number" id="humidity" min="0" max="100" step="0.1" placeholder="e.g. 50" required>
+          <label for="humidity">Relative Humidity <span class="slider-value" id="humidityVal">50%</span></label>
+          <input type="range" id="humidity" min="0" max="100" step="1" value="50" data-display="humidityVal" data-unit="%">
         </div>
 
         <div class="form-group">
@@ -68,7 +77,7 @@
           </select>
         </div>
 
-        <button type="submit" class="btn" style="width:100%;">Get AI Recommendation</button>
+        <button type="submit" class="btn" style="width:100%; justify-content:center;"><i class="fa-solid fa-wand-magic-sparkles"></i> Get AI Recommendation</button>
       </form>
 
       <div id="result-box"></div>
@@ -78,9 +87,28 @@
 
 <section class="alt-bg">
   <div class="container">
+    <span class="section-tag">Model Internals</span>
     <h2 class="section-title">How the Advisory Engine Decides</h2>
-    <p class="section-subtitle">This demo uses a transparent rule-based model. In a full deployment it would be trained on historical yield and sensor data.</p>
-    <table>
+    <p class="section-subtitle">Recommendations come from a trained artificial neural network (a multi-layer perceptron), not a hand-coded rule table. It was trained offline in Python with scikit-learn on a synthetic dataset of 6,000 labeled field scenarios, and runs entirely in your browser — no server round-trip needed.</p>
+    <div class="grid">
+      <div class="card" data-aos="fade-up" data-aos-delay="0">
+        <div class="icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <h3>Model Architecture</h3>
+        <p>8 input features → Dense(16, ReLU) → Dense(8, ReLU) → Dense(4, Softmax). Inputs: soil moisture, temperature, humidity, rain forecast, and one-hot encoded growth stage.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h3>Training &amp; Accuracy</h3>
+        <p>Trained on an 80/20 train-test split with stratified sampling. Achieves <strong>94.6% accuracy</strong> on held-out test data across 4 output classes.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon"><i class="fa-solid fa-bolt"></i></div>
+        <h3>In-Browser Inference</h3>
+        <p>Trained weights are embedded in <code>model_weights.js</code>; <code>ai_model.js</code> reproduces scikit-learn's forward pass exactly, verified to match the Python model's output.</p>
+      </div>
+    </div>
+    <p class="section-subtitle" style="margin-top:32px;">Reference: approximate optimal soil-moisture ranges per growth stage that informed the training labels.</p>
+    <table data-aos="fade-up">
       <tr><th>Growth Stage</th><th>Optimal Soil Moisture Range</th><th>Notes</th></tr>
       <tr><td>Germination</td><td>65% – 80%</td><td>Highest sensitivity to moisture stress; consistent moisture critical for sprouting.</td></tr>
       <tr><td>Tillering</td><td>60% – 75%</td><td>Supports shoot multiplication; moderate water demand.</td></tr>
@@ -91,10 +119,42 @@
 </section>
 
 <footer>
-  <p>&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</p>
-  <p><a href="contact.html">Contact the project team</a></p>
+  <div class="footer-grid">
+    <div>
+      <div class="brand" style="margin-bottom:12px;"><span class="leaf"><i class="fa-solid fa-seedling"></i></span> AgriSense Sugarcane</div>
+      <p style="color:var(--green-pale); font-size:0.88rem; max-width:320px;">AI and sensor-based irrigation advisory for sugarcane — an academic technology demonstration.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="mailto:khyatishah2005@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="sensors.html">Sensors & Tech</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in Touch</h4>
+      <ul>
+        <li><a href="contact.html">Contact form</a></li>
+        <li><a href="mailto:khyatishah2005@gmail.com">khyatishah2005@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 AgriSense Sugarcane Irrigation Advisory System. Academic Project Demonstration.</div>
 </footer>
 
+<button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="model_weights.js"></script>
+<script src="ai_model.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
